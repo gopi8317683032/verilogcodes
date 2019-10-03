@@ -1,0 +1,40 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 10/03/2019 09:29:14 AM
+// Design Name: 
+// Module Name: decoder4x16
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+module dec2x4(p,q,en,y1,y2,y3,y4);
+input p,q,en;
+output y1,y2,y3,y4;
+assign y1=(~p&~q)&en;
+assign y2=(~p&q)&en;
+assign y3=(p&~q)&en;
+assign y4=(p&q)&en;
+endmodule
+
+module decoder4x16(a,b,c,d,en,o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15);
+input a,b,c,d,en;
+output o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15;
+wire w1,w2,w3,w4;
+dec2x4 dec1(a,b,en,w1,w2,w3,w4);
+dec2x4 dec2(c,d,w1,o0,o1,o2,o3);
+dec2x4 dec3(c,d,w2,o4,o5,o6,o7);
+dec2x4 dec4(c,d,w3,o8,o9,o10,o11);
+dec2x4 dec5(c,d,w4,o12,o13,o14,o15);
+endmodule
