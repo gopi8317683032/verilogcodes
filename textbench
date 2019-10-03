@@ -1,0 +1,47 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 10/03/2019 09:41:53 AM
+// Design Name: 
+// Module Name: tb4x16dec
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module tb4x16dec();
+reg a,b,c,d,en;
+wire o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15;
+ decoder4x16 gpp(a,b,c,d,en,o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15);
+ initial
+ begin
+ a=0;
+ b=0;
+ c=0;
+ d=0;
+ en=1;
+ #10
+  a=0;
+ b=0;
+ c=0;
+ d=1;
+ en=1;
+ #10
+  a=1;
+ b=1;
+ c=1;
+ d=1;
+ en=1;
+ end
+endmodule
